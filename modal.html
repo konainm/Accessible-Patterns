@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Modal Dialog | Accessible Patterns</title>
+    <meta name="description" content="Demonstration of a fully accessible, premium modal dialog component.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Accessible Patterns</a>
+        <nav class="header-links" aria-label="Main navigation">
+            <a href="index.html">Components</a>
+            <a href="#">Documentation</a>
+            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme" title="Toggle color theme">
+                <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <button type="button" id="viewport-toggle" class="viewport-toggle-btn" aria-label="Switch to mobile view" title="Toggle viewport simulation">
+                <svg class="view-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <svg class="view-icon-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <a href="index.html" class="back-link">Back to Library</a>
+        
+        <section>
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Accessible Modal</h1>
+            <p style="color: var(--text-secondary); max-width: 800px; margin-bottom: 3rem; font-size: 1.1rem;">
+                This modal is designed following WAI-ARIA guidelines. It features focus trapping, 
+                responds to the Escape key to close, and manages ARIA states for screen readers. 
+                Coupled with a premium dark mode, solid-color flat design.
+            </p>
+
+            <div style="padding: 3rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; text-align: center;">
+                <button type="button" class="btn btn-primary" data-modal-target="demo-modal">
+                    Open Modal Dialog
+                </button>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Accessibility Standards</h2>
+            
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-primary);">Keyboard Navigation</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">The dialog component fully manages focus trapping and accessibility keys according to W3C WAI-ARIA guidelines:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Key</th>
+                            <th>Function</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Tab</code></td>
+                            <td>Focuses the next focusable element within the dialog window. Traps focus so the user cannot navigate to background page elements.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Shift + Tab</code></td>
+                            <td>Focuses the previous focusable element inside the dialog window. Traps focus within the dialog.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Escape</code></td>
+                            <td>Closes the active modal dialog box instantly and returns the focus to the button that triggered the opening event.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Space / Enter</code></td>
+                            <td>Activates focused trigger buttons to either open or close the modal window.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-primary); margin-top: 3rem;">ARIA Roles & Attributes</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">The markup uses semantic ARIA properties to communicate the state of the dialog to screen readers:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">ARIA Role / Attribute</th>
+                            <th style="width: 20%;">Target Element</th>
+                            <th>Description / Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>role="dialog"</code></td>
+                            <td>Modal Box</td>
+                            <td>Identifies the HTML container as a dialog window, changing screen reader modes.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-modal="true"</code></td>
+                            <td>Modal Box</td>
+                            <td>Indicates to assistive technologies that the background page content under the dialog window is inactive and cannot be accessed.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-labelledby="[ID]"</code></td>
+                            <td>Modal Box</td>
+                            <td>Points to the heading element (<code>id="modal-title"</code>) to assign it as the accessible heading name of the modal.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-describedby="[ID]"</code></td>
+                            <td>Modal Box</td>
+                            <td>Points to the main body paragraph (<code>id="modal-desc"</code>) to supply an accessible description for screen readers upon dialog activation.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-hidden="true / false"</code></td>
+                            <td>Overlay Box</td>
+                            <td>Indicates whether the dialog tree should be hidden or visible inside the screen reader's accessibility page tree.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-label="Close dialog"</code></td>
+                            <td>Close Button</td>
+                            <td>Supplies a clear, accessible text name for the close button SVG, as it lacks readable text content.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- The Modal Overlay -->
+        <div class="modal-overlay" id="demo-modal-overlay">
+            <!-- The Modal Dialog -->
+            <div 
+                id="demo-modal" 
+                class="modal-dialog" 
+                role="dialog" 
+                aria-modal="true" 
+                aria-labelledby="modal-title" 
+                aria-describedby="modal-desc"
+                tabindex="-1"
+            >
+                <div class="modal-header">
+                    <h2 id="modal-title" class="modal-title">Confirm Action</h2>
+                    <button type="button" class="modal-close-btn" data-modal-close aria-label="Close dialog">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="modal-desc" class="modal-body">
+                    <p>Are you sure you want to proceed? This is a demonstration of the accessible modal dialog. Notice how you cannot tab outside of this window until you close it.</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-modal-close>Cancel</button>
+                    <button type="button" class="btn btn-primary" data-modal-close>Confirm</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+</html>

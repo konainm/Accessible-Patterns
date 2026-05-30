@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Patterns | Premium Components</title>
+    <meta name="description" content="A curated library of premium, fully accessible web components featuring modern dark mode and glassmorphism design.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Accessible Patterns</a>
+        <nav class="header-links" aria-label="Main navigation">
+            <a href="#">Components</a>
+            <a href="#">Documentation</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">GitHub</a>
+            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme" title="Toggle color theme">
+                <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <button type="button" id="viewport-toggle" class="viewport-toggle-btn" aria-label="Switch to mobile view" title="Toggle viewport simulation">
+                <svg class="view-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <svg class="view-icon-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <h1>Beautiful & Accessible</h1>
+            <p>A library of fully accessible components designed with premium aesthetics, modern typography, and smooth micro-animations. Built to wow, constructed to include everyone.</p>
+        </section>
+
+        <section aria-labelledby="components-heading">
+            <h2 id="components-heading" class="visually-hidden">Component Library</h2>
+            
+            <div class="component-grid">
+                <!-- Modal Component Card -->
+                <a href="modal.html" class="component-card" aria-label="Accessible Modal Dialog Component">
+                    <div class="card-image">
+                        <img src="assets/modal_thumbnail.png" alt="Preview of the sleek dark mode modal dialog">
+                    </div>
+                    <div class="card-content">
+                        <h2>Accessible Modal</h2>
+                        <p>A fully accessible dialog box with focus trapping, ARIA roles, and Escape key support.</p>
+                    </div>
+                </a>
+                
+                <!-- Placeholder for future components -->
+                <div class="component-card placeholder-card" aria-hidden="true">
+                    <div class="card-image placeholder-image">
+                        <span class="placeholder-badge">Coming Soon</span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Tabs Component</h2>
+                        <p>Accessible tabbed interface with keyboard navigation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

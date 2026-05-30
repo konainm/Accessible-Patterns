@@ -1,0 +1,115 @@
+/* Modal specific styles */
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.75); /* Dark solid semi-transparent overlay, no blur */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  
+  /* Hidden state */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Restrict modal overlay to simulated mobile frame in viewport simulation mode */
+:root[data-view="mobile"] .modal-overlay {
+  position: absolute;
+}
+
+/* Dialog Box */
+.modal-dialog {
+  background: var(--bg-secondary);
+  border: var(--solid-border);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--card-shadow-hover);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background-color var(--transition-normal), border-color var(--transition-normal);
+  
+  /* Initial hidden state for animation */
+  transform: translateY(15px);
+  opacity: 0;
+}
+
+.modal-overlay.is-open .modal-dialog {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: var(--solid-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color var(--transition-normal);
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: var(--solid-border);
+  border-color: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.modal-close-btn:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: var(--solid-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  transition: border-color var(--transition-normal);
+}
+
+/* Focus styles for accessibility */
+.modal-dialog:focus {
+  outline: none;
+}

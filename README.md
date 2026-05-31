@@ -1,6 +1,6 @@
 # Accessible Patterns
 
-A curated library of premium, fully accessible web components featuring a modern, flat, solid-color design language (no blurs, no energy gradients). Designed for maximum visual clarity, tactile response, and 100% WCAG accessibility compliance.
+Designing for everyone should not be an afterthought—it must be the foundation of everything we build. This library is a dedicated component system aimed at removing digital barriers and empowering every user through universally accessible design. By equipping teams with a truly equitable toolkit, we are taking a vital step toward a web where intuitive, beautiful, and highly usable experiences are the standard for everyone, regardless of how they navigate the digital world.
 
 ## Accessible Components
 

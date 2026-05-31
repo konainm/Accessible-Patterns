@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip | Accessible Patterns</title>
+    <meta name="description" content="Demonstration of accessible tooltips and toggletip dialogs.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+    <script src="js/theme-init.js"></script>
+    <style>
+        .demo-section {
+            margin-bottom: 4rem;
+        }
+        
+        .tooltip-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .tooltip-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .demo-box {
+            background-color: var(--bg-secondary);
+            border: var(--solid-border);
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Accessible Components Library</a>
+        <nav class="header-links" aria-label="Main navigation">
+            <a href="index.html">Components</a>
+            <a href="documentation.html">Documentation</a>
+            <a href="https://github.com/konainm/Accessible-Patterns" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">GitHub</a>
+            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme" title="Toggle color theme">
+                <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button type="button" id="viewport-toggle" class="viewport-toggle-btn" aria-label="Switch to mobile view" title="Toggle viewport simulation">
+                <svg class="view-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                <svg class="view-icon-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <a href="index.html" class="back-link">Back to Components</a>
+        
+        <div class="hero" style="text-align: left; margin-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Tooltip</h1>
+            <p style="margin: 0;">Fully accessible tooltips and non-modal popover dialogs built with WAI-ARIA standards.</p>
+        </div>
+
+        <section class="demo-section">
+            <h2>Standard Tooltips (Hover / Focus)</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Purely informational tooltips that appear on hover or keyboard focus. They do not receive focus themselves and can be dismissed with the Escape key.</p>
+            
+            <div class="tooltip-grid">
+                <!-- Variant 1: Simple Plain Tooltip -->
+                <div class="demo-box">
+                    <div class="tooltip-wrapper">
+                        <button type="button" class="btn btn-primary" data-tooltip-trigger aria-describedby="tooltip-simple">
+                            Hover or Focus me
+                        </button>
+                        <div id="tooltip-simple" class="tooltip" role="tooltip">
+                            Save changes
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variant 2: Simple Large Tooltip -->
+                <div class="demo-box">
+                    <div class="tooltip-wrapper">
+                        <button type="button" class="btn btn-primary" data-tooltip-trigger aria-describedby="tooltip-large">
+                            More Information
+                        </button>
+                        <div id="tooltip-large" class="tooltip tooltip-large" role="tooltip">
+                            This is a larger, multi-line tooltip designed to hold a full sentence or two of descriptive context without breaking the layout.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>Tooltip Dialogs / Toggletips (Click)</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Rich tooltips treated as non-modal dialogs. Triggered by click, allowing users to move focus inside them if necessary. Dismissed by clicking outside or pressing Escape.</p>
+            
+            <div class="tooltip-grid">
+                <!-- Variant 3: Tooltip Dialog (Content Only) -->
+                <div class="demo-box">
+                    <div class="tooltip-wrapper">
+                        <button type="button" class="btn btn-primary" data-toggletip-trigger aria-controls="dialog-content" aria-expanded="false">
+                            Glossary Term
+                            <svg style="margin-left: 8px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </button>
+                        <div id="dialog-content" class="tooltip-dialog" role="dialog" aria-modal="false" aria-label="Glossary Definition">
+                            <h3>Toggletip</h3>
+                            <p>A toggletip is a UI component used to display supplemental information. Unlike a standard tooltip, it is toggled by click and can contain richer formatting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variant 4: Tooltip Dialog (Interactive) -->
+                <div class="demo-box">
+                    <div class="tooltip-wrapper">
+                        <button type="button" class="btn btn-primary" data-toggletip-trigger aria-controls="dialog-interactive" aria-expanded="false">
+                            Profile Settings
+                        </button>
+                        <div id="dialog-interactive" class="tooltip-dialog interactive" role="dialog" aria-modal="false" aria-label="Profile Quick Actions">
+                            <h3>Quick Actions</h3>
+                            <p>You can quickly update your status or view your full profile from here.</p>
+                            <a href="#" class="btn btn-primary" style="font-size: 0.875rem; padding: 0.5rem 1rem;">View Full Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Accessibility Standards</h2>
+            
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-primary);">Keyboard Navigation</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">The tooltip and toggletip components follow specific W3C WAI-ARIA keyboard interaction patterns:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Key</th>
+                            <th style="width: 35%;">Context</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Tab</code></td>
+                            <td>When focus is outside</td>
+                            <td>Moves focus to the tooltip trigger. Standard tooltips will display automatically on focus.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Enter / Space</code></td>
+                            <td>When focus is on Toggletip Trigger</td>
+                            <td>Toggles the visibility of the interactive toggletip dialog.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Escape</code></td>
+                            <td>When tooltip/toggletip is open</td>
+                            <td>Closes the open tooltip or toggletip and ensures focus is on the triggering element.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Tab / Shift + Tab</code></td>
+                            <td>When focus is inside Toggletip</td>
+                            <td>Moves focus through the interactive elements inside the dialog, following standard tab order.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-primary); margin-top: 3rem;">ARIA Roles & Attributes</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">The markup uses semantic ARIA properties to communicate the state and purpose of the tooltip to screen readers:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">ARIA Role / Attribute</th>
+                            <th style="width: 20%;">Target Element</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>role="tooltip"</code></td>
+                            <td>Tooltip Container</td>
+                            <td>Identifies the element as a standard tooltip. Applied to hover/focus tooltips.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-describedby="[ID]"</code></td>
+                            <td>Trigger Element</td>
+                            <td>Points to the ID of the standard tooltip, reading its content when the trigger is focused.</td>
+                        </tr>
+                        <tr>
+                            <td><code>role="dialog"</code></td>
+                            <td>Toggletip Container</td>
+                            <td>Identifies rich tooltips as non-modal dialogs, allowing users to interact with contents.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-expanded="true/false"</code></td>
+                            <td>Toggletip Trigger</td>
+                            <td>Communicates the open/closed state of a rich tooltip dialog to screen readers.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/modal.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

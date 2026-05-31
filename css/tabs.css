@@ -1,0 +1,115 @@
+/* Tabs Component Styles */
+
+.tabs-section {
+  margin-bottom: 3rem;
+  background: var(--bg-secondary);
+  border: var(--solid-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.tabs-section:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.tabs-header {
+  padding: 1.5rem 2rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tabs-header h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.tabs-header p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Tab List */
+[role="tablist"] {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tab Buttons */
+[role="tab"] {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+[role="tab"]:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+[role="tab"][aria-selected="true"] {
+  color: var(--accent-primary);
+  border-bottom-color: var(--accent-primary);
+}
+
+/* Ensure focus styles are distinct */
+[role="tab"]:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: -3px;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Tab Panels */
+[role="tabpanel"] {
+  padding: 2rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  min-height: 150px;
+  animation: fadeIn var(--transition-normal);
+}
+
+[role="tabpanel"][hidden] {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsivenes */
+@media (max-width: 600px) {
+  [role="tab"] {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  [role="tabpanel"] {
+    padding: 1.5rem;
+  }
+}

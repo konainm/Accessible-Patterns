@@ -13,8 +13,8 @@
   
   /* Shadows and borders (solid-themed, no energy glows) */
   --solid-border: 2px solid var(--border-color);
-  --card-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.4);
-  --card-shadow-hover: 8px 8px 0px 0px rgba(0, 0, 0, 0.6);
+  --card-shadow: none;
+  --card-shadow-hover: none;
   
   /* Typography */
   --font-family: 'Inter', sans-serif;
@@ -35,8 +35,8 @@
   --accent-primary: #2563eb;
   --accent-hover: #1d4ed8;
   
-  --card-shadow: 4px 4px 0px 0px #cbd5e1;
-  --card-shadow-hover: 8px 8px 0px 0px #94a3b8;
+  --card-shadow: none;
+  --card-shadow-hover: none;
 }
 
 * {
@@ -146,7 +146,7 @@ main {
 }
 
 .hero {
-  text-align: center;
+  text-align: left;
   margin-bottom: 4rem;
 }
 
@@ -160,8 +160,8 @@ main {
 .hero p {
   font-size: 1.2rem;
   color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 0;
 }
 
 /* Grid */

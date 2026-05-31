@@ -1,25 +1,3 @@
-// Immediate execution to prevent flash of theme or view simulation
-(function () {
-    const getInitialTheme = () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) return savedTheme;
-        
-        const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        return systemPrefersLight ? 'light' : 'dark';
-    };
-
-    const getInitialView = () => {
-        const savedView = localStorage.getItem('view');
-        return savedView || 'desktop';
-    };
-
-    const activeTheme = getInitialTheme();
-    document.documentElement.setAttribute('data-theme', activeTheme);
-
-    const activeView = getInitialView();
-    document.documentElement.setAttribute('data-view', activeView);
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Theme Toggle Logic
     const themeToggleBtn = document.getElementById('theme-toggle');
@@ -74,4 +52,64 @@ document.addEventListener('DOMContentLoaded', () => {
             updateViewportButton(newView);
         });
     }
+
+    // 3. SPA Router Logic
+    function initRouter() {
+        const handleNavigation = async (url, pushState = true) => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const html = await response.text();
+                
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // Extract main content and title
+                const newMain = doc.getElementById('main-content');
+                const newTitle = doc.title;
+                
+                if (newMain) {
+                    document.getElementById('main-content').innerHTML = newMain.innerHTML;
+                    document.title = newTitle;
+                    
+                    if (pushState) {
+                        history.pushState(null, newTitle, url);
+                    }
+                    
+                    // Dispatch custom event to re-initialize components
+                    document.dispatchEvent(new Event('pageContentLoaded'));
+                }
+            } catch (error) {
+                console.error('Failed to load page:', error);
+                // Fallback to standard navigation
+                window.location.href = url;
+            }
+        };
+
+        // Intercept clicks on links
+        document.addEventListener('click', (e) => {
+            // Find closest anchor tag
+            const link = e.target.closest('a');
+            if (!link) return;
+            
+            // Check if it's a local HTML link, not a hash link, and not opening in new tab
+            const href = link.getAttribute('href');
+            if (href && href.endsWith('.html') && !href.startsWith('http') && !href.startsWith('#') && link.target !== '_blank') {
+                e.preventDefault();
+                // Don't navigate if we're already on the same page
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                const targetPath = href.split('/').pop();
+                if (currentPath !== targetPath) {
+                    handleNavigation(href);
+                }
+            }
+        });
+
+        // Handle back/forward buttons
+        window.addEventListener('popstate', () => {
+            handleNavigation(window.location.pathname, false);
+        });
+    }
+
+    initRouter();
 });

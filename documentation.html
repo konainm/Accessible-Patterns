@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Accessible Components Library</title>
+    <meta name="description" content="Documentation on how to install and run the Accessible Components Library locally.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <script src="js/theme-init.js"></script>
+    <style>
+        .doc-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .doc-section h2 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+        .doc-section p, .doc-section li {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .doc-section pre {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        .doc-section code {
+            font-family: monospace;
+            background: var(--bg-tertiary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Accessible Components Library</a>
+        <nav class="header-links" aria-label="Main navigation">
+            <a href="index.html">Components</a>
+            <a href="documentation.html">Documentation</a>
+            <a href="https://github.com/konainm/Accessible-Patterns" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub Repository">GitHub</a>
+            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme"
+                title="Toggle color theme">
+                <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <button type="button" id="viewport-toggle" class="viewport-toggle-btn" aria-label="Switch to mobile view"
+                title="Toggle viewport simulation">
+                <svg class="view-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <svg class="view-icon-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <div class="hero" style="text-align: left; margin-bottom: 2rem;">
+            <h1>Documentation</h1>
+            <p>Learn how to download and run the Accessible Components Library in your local development environment.</p>
+        </div>
+
+        <section class="doc-section">
+            <h2>1. Getting the Code</h2>
+            <p>You can clone this library directly from GitHub to your local machine. You will need <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary);">Git</a> installed.</p>
+            <pre><code>git clone https://github.com/konainm/Accessible-Patterns.git
+cd Accessible-Patterns</code></pre>
+            <p>Alternatively, you can visit the <a href="https://github.com/konainm/Accessible-Patterns" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary);">GitHub Repository</a> and download the project as a ZIP file.</p>
+        </section>
+
+        <section class="doc-section">
+            <h2>2. Running Locally</h2>
+            <p>Because these components rely on local files and potentially JavaScript modules, they should be served over HTTP rather than opened directly via the <code>file://</code> protocol.</p>
+            
+            <h3 style="margin-top: 1.5rem; color: var(--text-primary);">Option A: Using Node.js (Recommended)</h3>
+            <p>If you have <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary);">Node.js</a> installed, you can use `npx` to instantly spin up a local server.</p>
+            <pre><code>npx serve</code></pre>
+            <p>Then, open your browser and navigate to the local URL provided (usually <code>http://localhost:3000</code>).</p>
+
+            <h3 style="margin-top: 1.5rem; color: var(--text-primary);">Option B: Using Python</h3>
+            <p>If you have Python 3 installed, you can start a simple HTTP server from the command line.</p>
+            <pre><code>python -m http.server 8080</code></pre>
+            <p>Then, open your browser and navigate to <code>http://localhost:8080</code>.</p>
+        </section>
+
+        <section class="doc-section">
+            <h2>3. Usage Guidelines</h2>
+            <p>When incorporating these patterns into your own projects, please remember:</p>
+            <ul>
+                <li><strong>Preserve ARIA attributes:</strong> Do not remove <code>aria-*</code> or <code>role="*"</code> attributes from the HTML structures. They are essential for screen readers.</li>
+                <li><strong>Keyboard testing:</strong> Always test any modifications using only your keyboard (Tab, Shift+Tab, Arrows, Space, Enter, Escape).</li>
+                <li><strong>Color Contrast:</strong> If you change the CSS variables (e.g., <code>--bg-primary</code>, <code>--text-primary</code>), verify that the contrast ratio remains at least 4.5:1 for normal text.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="js/modal.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

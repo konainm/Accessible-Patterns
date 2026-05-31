@@ -69,7 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newTitle = doc.title;
                 
                 if (newMain) {
-                    document.getElementById('main-content').innerHTML = newMain.innerHTML;
+                    const targetContainer = document.getElementById('main-content');
+                    targetContainer.innerHTML = ''; // Safe clear
+                    while (newMain.firstChild) {
+                        targetContainer.appendChild(newMain.firstChild);
+                    }
                     document.title = newTitle;
                     
                     if (pushState) {
@@ -82,7 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Failed to load page:', error);
                 // Fallback to standard navigation
-                window.location.href = url;
+                const targetPage = url.split('/').pop() || 'index.html';
+                switch (targetPage) {
+                    case 'index.html':
+                        window.location.href = 'index.html';
+                        break;
+                    case 'modal.html':
+                        window.location.href = 'modal.html';
+                        break;
+                    case 'tabs.html':
+                        window.location.href = 'tabs.html';
+                        break;
+                    case 'documentation.html':
+                        window.location.href = 'documentation.html';
+                        break;
+                    default:
+                        console.error('Redirect prevented to unapproved page:', targetPage);
+                }
             }
         };
 

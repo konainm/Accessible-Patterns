@@ -21,20 +21,7 @@ A curated library of premium, fully accessible web components featuring a modern
   - Clear lists of all keyboard interaction paths and ARIA roles for every component.
   - Padded responsive tables with overflow scroll on mobile.
 
-## Project Structure
 
-```
-├── assets/
-│   └── modal_thumbnail.png  # Flat mockup illustration of the modal dialog
-├── css/
-│   ├── styles.css           # Core styling tokens, grids, header, and simulator
-│   └── modal.css            # Dialog component overlay, box rules, and animations
-├── js/
-│   ├── main.js              # Theme switcher, viewport toggle, and state managers
-│   └── modal.js             # Focus trapping and keyboard accessible modal logic
-├── index.html               # Homepage (Component Library Grid)
-└── modal.html               # Modal Dialog component demo & specifications page
-```
 
 ## How to Run Locally
 

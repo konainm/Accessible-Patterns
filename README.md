@@ -2,19 +2,6 @@
 
 A curated library of premium, fully accessible web components featuring a modern, flat, solid-color design language (no blurs, no energy gradients). Designed for maximum visual clarity, tactile response, and 100% WCAG accessibility compliance.
 
-## Key Features & Architecture
-
-- **⚡ Client-Side SPA Router**:
-  - Custom PJAX-style router ensures lightning-fast navigation. 
-  - The header and navigation regions persist across pages, preventing FOUC (Flash of Unstyled Content) and layout flicker, making it feel like a modern Single Page Application (SPA) without relying on heavy frameworks.
-- **🎨 Premium Solid Theme Toggle**:
-  - Persists **Light** and **Dark** themes in `localStorage`.
-  - Zero theme-flash loading (using early attribute binding).
-  - Fully accessible ARIA control attributes on the toggle switch.
-- **📱 Desktop Viewport Simulator**:
-  - Simulates a mobile phone screen (`412px` width) directly in your desktop browser.
-  - Constrains fixed overlays (like the dialog box) inside the simulated container for a fully nested mockup.
-
 ## Accessible Components
 
 ### 1. Dialog (Modal)
@@ -35,14 +22,6 @@ A robust dual-system component for rendering informational popups.
 - **Standard Tooltips**: Text-only informational blocks. Triggered safely by `hover` or `focus`, utilizing `role="tooltip"` and `aria-describedby`.
 - **Toggletips (Interactive Dialogs)**: Non-modal popovers containing links or buttons. Triggered explicitly by a `click` to prevent accidental closure, allowing users to move focus inside them. Uses `role="dialog"` and `aria-expanded`.
 - **UX**: Both variants are easily dismissed with the `Escape` key.
-
-## Accessibility Specifications
-
-Components are built following W3C Web Content Accessibility Guidelines (WCAG 2.1/2.2):
-- Contrast ratio is guaranteed `>= 4.5:1` for all text and placeholder components.
-- Keyboard navigation is fully supported for all interactive elements.
-- ARIA states communicate element changes dynamically to screen readers.
-- Every component page includes detailed specification tables for Keyboard Navigation and ARIA Roles & Attributes.
 
 ## How to Run Locally
 

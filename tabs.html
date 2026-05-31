@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs Component | Accessible Patterns</title>
+    <meta name="description" content="A fully accessible tabbed interface featuring smooth transitions and both automatic and manual keyboard activation modes.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <script src="js/theme-init.js"></script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Accessible Components Library</a>
+        <nav class="header-links" aria-label="Main navigation">
+            <a href="index.html">Components</a>
+            <a href="documentation.html">Documentation</a>
+            <a href="https://github.com/konainm/Accessible-Patterns" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">GitHub</a>
+            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme" title="Toggle color theme">
+                <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <button type="button" id="viewport-toggle" class="viewport-toggle-btn" aria-label="Switch to mobile view" title="Toggle viewport simulation">
+                <svg class="view-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <svg class="view-icon-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <a href="index.html" class="back-link">Back to Components</a>
+        
+        <div class="hero" style="text-align: left; margin-bottom: 2rem;">
+            <h1 id="tabs-title">Accessible Tabs</h1>
+            <p style="margin: 0;">A fully functional, keyboard-friendly tab interface featuring both automatic and manual activation variants, built with semantic HTML and ARIA standards.</p>
+        </div>
+
+        <!-- Example 1: Automatic Activation -->
+        <section class="tabs-section" aria-labelledby="auto-tabs-title">
+            <div class="tabs-header">
+                <h3 id="auto-tabs-title">Automatic Activation</h3>
+                <p>Pressing Left/Right arrow keys will immediately change the active tab and display its content.</p>
+                <div role="tablist" aria-label="Example Tabs with Automatic Activation" data-activation="automatic">
+                    <button role="tab" aria-selected="true" aria-controls="auto-panel-1" id="auto-tab-1" tabindex="0">
+                        Design Elements
+                    </button>
+                    <button role="tab" aria-selected="false" aria-controls="auto-panel-2" id="auto-tab-2" tabindex="-1">
+                        Typography
+                    </button>
+                    <button role="tab" aria-selected="false" aria-controls="auto-panel-3" id="auto-tab-3" tabindex="-1">
+                        Micro-interactions
+                    </button>
+                </div>
+            </div>
+            
+            <div id="auto-panel-1" role="tabpanel" aria-labelledby="auto-tab-1">
+                <h4>Sleek Glassmorphism</h4>
+                <p>We combine deep background colors with semi-transparent, frosted-glass effects. The visual hierarchy is established through precise box shadows and solid borders that outline interactive elements.</p>
+            </div>
+            <div id="auto-panel-2" role="tabpanel" aria-labelledby="auto-tab-2" hidden>
+                <h4>Modern Typefaces</h4>
+                <p>Our library relies heavily on modern sans-serif fonts such as Inter, ensuring maximum legibility across different devices and providing a clean, contemporary feel.</p>
+            </div>
+            <div id="auto-panel-3" role="tabpanel" aria-labelledby="auto-tab-3" hidden>
+                <h4>Delightful Feedback</h4>
+                <p>Every interactive state (hover, focus, active) provides immediate visual feedback through micro-animations, reinforcing user actions without overwhelming the interface.</p>
+            </div>
+        </section>
+
+        <!-- Example 2: Manual Activation -->
+        <section class="tabs-section" aria-labelledby="manual-tabs-title">
+            <div class="tabs-header">
+                <h3 id="manual-tabs-title">Manual Activation</h3>
+                <p>Pressing Left/Right arrow keys will only move focus. Press <code>Space</code> or <code>Enter</code> to activate the tab.</p>
+                <div role="tablist" aria-label="Example Tabs with Manual Activation" data-activation="manual">
+                    <button role="tab" aria-selected="true" aria-controls="manual-panel-1" id="manual-tab-1" tabindex="0">
+                        Overview
+                    </button>
+                    <button role="tab" aria-selected="false" aria-controls="manual-panel-2" id="manual-tab-2" tabindex="-1">
+                        Installation
+                    </button>
+                    <button role="tab" aria-selected="false" aria-controls="manual-panel-3" id="manual-tab-3" tabindex="-1">
+                        API Reference
+                    </button>
+                </div>
+            </div>
+            
+            <div id="manual-panel-1" role="tabpanel" aria-labelledby="manual-tab-1">
+                <h4>Component Overview</h4>
+                <p>Manual activation is recommended when tab panels contain content that takes a long time to load or when moving focus through the tabs without activating them is preferred.</p>
+            </div>
+            <div id="manual-panel-2" role="tabpanel" aria-labelledby="manual-tab-2" hidden>
+                <h4>Getting Started</h4>
+                <p>Include the <code>css/tabs.css</code> and <code>js/tabs.js</code> files in your project. Structure your HTML using <code>role="tablist"</code>, <code>role="tab"</code>, and <code>role="tabpanel"</code>.</p>
+            </div>
+            <div id="manual-panel-3" role="tabpanel" aria-labelledby="manual-tab-3" hidden>
+                <h4>Accessibility API</h4>
+                <p>The component relies on setting <code>data-activation="manual"</code> on the <code>tablist</code>. All focus management and ARIA updates are handled automatically by the JavaScript module.</p>
+            </div>
+        </section>
+        
+        <section style="margin-top: 4rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Accessibility Standards</h2>
+            
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-primary);">Keyboard Navigation</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">The tabs component manages focus and arrow key navigation according to W3C WAI-ARIA guidelines:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Key</th>
+                            <th>Function</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Tab</code></td>
+                            <td>When focus moves into the tab list, it places focus on the active tab element. Successive tabs move focus outside the tablist to the tab panel or next focusable element.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Left Arrow / Right Arrow</code></td>
+                            <td>Moves focus to the previous or next tab. If on the last tab, focus wraps to the first (and vice versa). In Automatic mode, this also activates the tab.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Up Arrow / Down Arrow</code></td>
+                            <td>Performs the same function as Left/Right arrows, but only active when the tablist uses <code>aria-orientation="vertical"</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Home / End</code></td>
+                            <td>Moves focus to the first or last tab element in the list, respectively.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Space / Enter</code></td>
+                            <td>Activates the currently focused tab if the component is set to Manual Activation mode.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-primary); margin-top: 3rem;">ARIA Roles & Attributes</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">The markup uses semantic ARIA properties to communicate the relationships and state of the tabs to screen readers:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">ARIA Role / Attribute</th>
+                            <th style="width: 20%;">Target Element</th>
+                            <th>Description / Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>role="tablist"</code></td>
+                            <td>Container</td>
+                            <td>Identifies the element that serves as the container for the set of tabs.</td>
+                        </tr>
+                        <tr>
+                            <td><code>role="tab"</code></td>
+                            <td>Tab Button</td>
+                            <td>Identifies the element as a tab that controls the visibility of an associated tab panel.</td>
+                        </tr>
+                        <tr>
+                            <td><code>role="tabpanel"</code></td>
+                            <td>Content Box</td>
+                            <td>Identifies the element that contains the content associated with a specific tab.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-selected="true / false"</code></td>
+                            <td>Tab Button</td>
+                            <td>Indicates to assistive technologies whether the tab is currently active and its panel is displayed.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-controls="[ID]"</code></td>
+                            <td>Tab Button</td>
+                            <td>Points to the ID of the associated tab panel, establishing a relationship between the controller and the controlled element.</td>
+                        </tr>
+                        <tr>
+                            <td><code>aria-labelledby="[ID]"</code></td>
+                            <td>Tab Panel</td>
+                            <td>Points to the ID of the associated tab button to provide an accessible name for the panel region.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script src="js/modal.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -100,11 +100,11 @@ class AccessibleModal {
   }
 }
 
-// Initialize on DOM Load
-document.addEventListener('DOMContentLoaded', () => {
+function initModals() {
   const modalEl = document.getElementById('demo-modal');
-  if (modalEl) {
+  if (modalEl && !modalEl.dataset.initialized) {
     const modalInstance = new AccessibleModal(modalEl);
+    modalEl.dataset.initialized = 'true';
     
     // Attach trigger buttons
     const triggers = document.querySelectorAll('[data-modal-target="demo-modal"]');
@@ -114,4 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-});
+}
+
+// Initialize on DOM Load and SPA navigation
+document.addEventListener('DOMContentLoaded', initModals);
+document.addEventListener('pageContentLoaded', initModals);

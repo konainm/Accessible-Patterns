@@ -97,6 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     case 'tabs.html':
                         window.location.href = 'tabs.html';
                         break;
+                    case 'tooltip.html':
+                        window.location.href = 'tooltip.html';
+                        break;
                     case 'documentation.html':
                         window.location.href = 'documentation.html';
                         break;

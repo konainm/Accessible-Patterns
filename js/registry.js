@@ -4,6 +4,8 @@
  * global search metadata, footer quick link, and on-demand CSS/JS assets.
  */
 window.APP_REGISTRY = Object.freeze({
+    version: '9',
+
     pages: Object.freeze([
         Object.freeze({
             id: 'home',

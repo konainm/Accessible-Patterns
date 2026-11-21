@@ -21,29 +21,6 @@
     const loadedStyles = new Set();
     const loadedScripts = new Map();
 
-    // Helper: create SVG icon safely without innerHTML
-    function createSvgIcon(width, height, strokeWidth, paths) {
-        const ns = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(ns, 'svg');
-        svg.setAttribute('width', String(width));
-        svg.setAttribute('height', String(height));
-        svg.setAttribute('viewBox', '0 0 24 24');
-        svg.setAttribute('fill', 'none');
-        svg.setAttribute('stroke', 'currentColor');
-        svg.setAttribute('stroke-width', String(strokeWidth));
-        svg.setAttribute('stroke-linecap', 'round');
-        svg.setAttribute('stroke-linejoin', 'round');
-        svg.setAttribute('aria-hidden', 'true');
-
-        paths.forEach(({ tag, attrs }) => {
-            const el = document.createElementNS(ns, tag);
-            Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
-            svg.appendChild(el);
-        });
-
-        return svg;
-    }
-
     // -------------------------------------------------------------------------
     // 1. Dynamic Asset Loaders (strictly from allow-listed registry paths)
     // -------------------------------------------------------------------------
@@ -113,47 +90,6 @@
     // -------------------------------------------------------------------------
     // 2. Registry-Driven Component Grid (Homepage) & Footer Quick Links
     // -------------------------------------------------------------------------
-    function buildComboboxPreviewNode() {
-        const preview = document.createElement('div');
-        preview.className = 'combobox-thumbnail-preview';
-        preview.setAttribute('aria-hidden', 'true');
-
-        const box = document.createElement('div');
-        box.className = 'combobox-thumb-box';
-
-        const inputRow = document.createElement('div');
-        inputRow.className = 'combobox-thumb-input';
-        const inputText = document.createElement('span');
-        inputText.textContent = 'Can';
-        const chevron = createSvgIcon(14, 14, 2, [
-            { tag: 'polyline', attrs: { points: '18 15 12 9 6 15' } }
-        ]);
-        inputRow.append(inputText, chevron);
-
-        const list = document.createElement('div');
-        list.className = 'combobox-thumb-list';
-
-        const activeItem = document.createElement('div');
-        activeItem.className = 'combobox-thumb-item active';
-        const activeLabel = document.createElement('span');
-        activeLabel.textContent = 'Canada';
-        const check = createSvgIcon(12, 12, 2.5, [
-            { tag: 'polyline', attrs: { points: '20 6 9 17 4 12' } }
-        ]);
-        activeItem.append(activeLabel, check);
-
-        const secondItem = document.createElement('div');
-        secondItem.className = 'combobox-thumb-item';
-        const secondLabel = document.createElement('span');
-        secondLabel.textContent = 'Canary Islands';
-        secondItem.appendChild(secondLabel);
-
-        list.append(activeItem, secondItem);
-        box.append(inputRow, list);
-        preview.appendChild(box);
-        return preview;
-    }
-
     function renderHomeComponentGrid() {
         const grid = document.getElementById('component-grid');
         if (!grid) return;
@@ -174,8 +110,6 @@
                 img.src = component.thumbnail.src;
                 img.alt = component.thumbnail.alt;
                 imageBox.appendChild(img);
-            } else if (component.thumbnail && component.thumbnail.type === 'combobox-preview') {
-                imageBox.appendChild(buildComboboxPreviewNode());
             }
 
             const content = document.createElement('div');

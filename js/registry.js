@@ -95,7 +95,9 @@ window.APP_REGISTRY = Object.freeze({
             scripts: Object.freeze(['js/combobox.js?v=3']),
             keywords: Object.freeze(['combobox', 'autocomplete', 'select', 'dropdown', 'listbox', 'option', 'aria-activedescendant', 'live region']),
             thumbnail: Object.freeze({
-                type: 'combobox-preview'
+                type: 'image',
+                src: 'assets/combobox_thumbnail.png',
+                alt: 'Preview of the sleek dark mode autocomplete combobox'
             })
         })
     ])

@@ -8,9 +8,9 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
     <title>Accessible Components Library</title>
-    content="A curated library of universally accessible web components built with semantic HTML, W3C WAI-ARIA patterns,
-    and a unified zero-build app shell.">
-    <link rel="stylesheet" href="css/styles.css?v=6">
+    <meta name="description"
+        content="A curated library of universally accessible web components built with semantic HTML, W3C WAI-ARIA patterns, and a unified zero-build app shell.">
+    <link rel="stylesheet" href="css/styles.css?v=7">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <script src="js/theme-init.js"></script>
 </head>
@@ -100,41 +100,43 @@
         </nav>
     </header>
 
-                <noscript>
-                    <section class="doc-section">
-                        <h1>JavaScript Required</h1>
-                        <p>The Accessible Components Library uses a lightweight client-side app shell to load individual
-                            components. Please enable JavaScript to browse the interactive examples.</p>
-                    </section>
-                </noscript>
-            </main>
+    <main id="main-content" tabindex="-1">
+        <noscript>
+            <section class="doc-section">
+                <h1>JavaScript Required</h1>
+                <p>The Accessible Components Library uses a lightweight client-side app shell to load individual
+                    components. Please enable JavaScript to browse the interactive examples.</p>
+            </section>
+        </noscript>
+    </main>
 
-                <div class="footer-inner">
-                    <div class="footer-brand">
-                        <a href="#/" class="footer-logo">
-                            <img src="assets/favicon.png" alt="A11y Logo" class="logo-icon">
-                            <span>Accessible Components Library</span>
-                        </a>
-                        <p>Universally accessible UI patterns built with semantic HTML, W3C WAI-ARIA practices, and zero
-                            build
-                            dependencies.</p>
-                    </div>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#/" class="footer-logo">
+                    <img src="assets/favicon.png" alt="A11y Logo" class="logo-icon">
+                    <span>Accessible Components Library</span>
+                </a>
+                <p>Universally accessible UI patterns built with semantic HTML, W3C WAI-ARIA practices, and zero build
+                    dependencies.</p>
+            </div>
 
-                        <h2>Components</h2>
-                        <ul id="footer-components-list" class="footer-links"></ul>
-                    </div>
+            <div class="footer-column">
+                <h2>Components</h2>
+                <ul id="footer-components-list" class="footer-links"></ul>
+            </div>
 
-                        <div class="footer-column">
-                            <h2>Resources</h2>
-                            <ul class="footer-links">
-                                <li><a href="#/">Component Library</a></li>
-                                <li><a href="#/documentation">Documentation</a></li>
-                                <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/" target="_blank"
-                                        rel="noopener noreferrer">W3C ARIA APG</a></li>
-                                <li><a href="https://github.com/konainm/Accessible-Patterns" target="_blank"
-                                        rel="noopener noreferrer">GitHub Repository</a></li>
-                            </ul>
-                        </div>
+            <div class="footer-column">
+                <h2>Resources</h2>
+                <ul class="footer-links">
+                    <li><a href="#/">Component Library</a></li>
+                    <li><a href="#/documentation">Documentation</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/" target="_blank"
+                            rel="noopener noreferrer">W3C ARIA APG</a></li>
+                    <li><a href="https://github.com/konainm/Accessible-Patterns" target="_blank"
+                            rel="noopener noreferrer">GitHub Repository</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>Built by <a href="https://github.com/konainm" target="_blank" rel="noopener noreferrer"
@@ -144,8 +146,8 @@
 
     <div id="route-announcer" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
 
-    <script src="js/registry.js?v=6"></script>
-    <script src="js/app.js?v=6"></script>
+    <script src="js/registry.js?v=7"></script>
+    <script src="js/app.js?v=7"></script>
 </body>
 
 </html>

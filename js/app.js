@@ -64,7 +64,7 @@
         if (templateCache.has(templatePath)) {
             return templateCache.get(templatePath);
         }
-        const response = await fetch(templatePath);
+        const response = await fetch(templatePath, { cache: 'no-cache' });
         if (!response.ok) {
             throw new Error(`Failed to load view template (${response.status})`);
         }

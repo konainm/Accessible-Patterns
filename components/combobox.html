@@ -1,0 +1,230 @@
+<a href="#/" class="back-link">Back to Components</a>
+
+<div class="hero page-hero">
+    <h1 id="combobox-title" class="component-title">Combobox</h1>
+    <p>A fully accessible W3C WAI-ARIA combobox featuring editable list autocomplete and a
+        select-only variant, complete with keyboard navigation and ARIA live region announcements.</p>
+</div>
+
+<!-- Example 1: Editable Combobox with List Autocomplete -->
+<section class="combobox-section" aria-labelledby="editable-combobox-heading">
+    <h2 id="editable-combobox-heading">Editable Combobox (List Autocomplete)</h2>
+    <p>Type to filter the list of countries, or use <code>Down Arrow</code> and <code>Up Arrow</code> to
+        navigate options and <code>Enter</code> to select.</p>
+
+    <div class="combobox-wrapper" data-combobox>
+        <label id="country-label" for="country-input" class="combobox-label">Country or Region</label>
+        <span id="country-hint" class="combobox-hint">Start typing to filter options</span>
+        <div class="combobox-input-group">
+            <input type="text" id="country-input" class="combobox-input" role="combobox"
+                aria-autocomplete="list" aria-expanded="false" aria-controls="country-listbox"
+                aria-describedby="country-hint" placeholder="Search countries...">
+            <button type="button" class="combobox-toggle-btn" data-combobox-toggle
+                aria-label="Show country options" aria-expanded="false" aria-controls="country-listbox"
+                tabindex="-1">
+                <svg class="combobox-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <ul id="country-listbox" class="combobox-listbox" role="listbox" aria-labelledby="country-label" hidden>
+            <li id="country-opt-1" class="combobox-option" role="option" aria-selected="false">
+                <span>Australia</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-2" class="combobox-option" role="option" aria-selected="false">
+                <span>Brazil</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-3" class="combobox-option" role="option" aria-selected="false">
+                <span>Canada</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-4" class="combobox-option" role="option" aria-selected="false">
+                <span>Denmark</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-5" class="combobox-option" role="option" aria-selected="false">
+                <span>France</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-6" class="combobox-option" role="option" aria-selected="false">
+                <span>Germany</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-7" class="combobox-option" role="option" aria-selected="false">
+                <span>Japan</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-8" class="combobox-option" role="option" aria-selected="false">
+                <span>United Kingdom</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="country-opt-9" class="combobox-option" role="option" aria-selected="false">
+                <span>United States</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li class="combobox-no-results" data-combobox-empty hidden>No matching countries found.</li>
+        </ul>
+
+        <div class="combobox-selection-readout">
+            Selected value: <strong data-combobox-value>None</strong>
+        </div>
+        <div class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-combobox-status></div>
+    </div>
+</section>
+
+<!-- Example 2: Select-Only Combobox -->
+<section class="combobox-section" aria-labelledby="select-combobox-heading">
+    <h2 id="select-combobox-heading">Select-Only Combobox</h2>
+    <p>A non-editable combobox button supporting <code>Space</code>, <code>Enter</code>, <code>Home</code>,
+        <code>End</code>, arrow keys, and character type-ahead.</p>
+
+    <div class="combobox-wrapper" data-combobox>
+        <span id="framework-label" class="combobox-label">Favorite Framework</span>
+        <button type="button" id="framework-button" class="combobox-button" role="combobox"
+            aria-haspopup="listbox" aria-expanded="false" aria-labelledby="framework-label framework-button"
+            aria-controls="framework-listbox">
+            <span class="combobox-button-text is-placeholder" data-combobox-button-text>Select a framework...</span>
+            <svg class="combobox-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </button>
+
+        <ul id="framework-listbox" class="combobox-listbox" role="listbox" aria-labelledby="framework-label" hidden>
+            <li id="fw-opt-1" class="combobox-option" role="option" aria-selected="false">
+                <span>Vanilla JavaScript</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="fw-opt-2" class="combobox-option" role="option" aria-selected="false">
+                <span>React</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="fw-opt-3" class="combobox-option" role="option" aria-selected="false">
+                <span>Vue</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="fw-opt-4" class="combobox-option" role="option" aria-selected="false">
+                <span>Svelte</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="fw-opt-5" class="combobox-option" role="option" aria-selected="false">
+                <span>Angular</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+            <li id="fw-opt-6" class="combobox-option" role="option" aria-selected="false">
+                <span>SolidJS</span>
+                <svg class="combobox-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </li>
+        </ul>
+
+        <div class="combobox-selection-readout">
+            Selected value: <strong data-combobox-value>None</strong>
+        </div>
+        <div class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-combobox-status></div>
+    </div>
+</section>
+
+<!-- Accessibility Standards Documentation -->
+<section class="standards-section">
+    <h2>Accessibility Standards</h2>
+
+    <h3>Keyboard Navigation</h3>
+    <p class="standards-intro">The combobox component implements the W3C WAI-ARIA Authoring Practices Guide (APG) keyboard interaction model:</p>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-key">Key</th>
+                    <th>Function</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>Down Arrow</code></td>
+                    <td>Opens the listbox if closed. When open, moves visual focus (<code>aria-activedescendant</code>) to the next option, wrapping to the first option from the end.</td>
+                </tr>
+                <tr>
+                    <td><code>Up Arrow</code></td>
+                    <td>Opens the listbox if closed. When open, moves visual focus to the previous option, wrapping to the last option from the start.</td>
+                </tr>
+                <tr>
+                    <td><code>Alt + Down / Up Arrow</code></td>
+                    <td><code>Alt + Down</code> opens the listbox without moving focus; <code>Alt + Up</code> closes the listbox.</td>
+                </tr>
+                <tr>
+                    <td><code>Enter</code></td>
+                    <td>Selects the active option, updates the combobox value, and closes the listbox.</td>
+                </tr>
+                <tr>
+                    <td><code>Escape</code></td>
+                    <td>Closes the listbox if open. In the editable combobox, pressing Escape when closed clears the input value.</td>
+                </tr>
+                <tr>
+                    <td><code>Home / End</code></td>
+                    <td>In the select-only combobox, moves visual focus to the first or last option. In the editable combobox, moves the text cursor.</td>
+                </tr>
+                <tr>
+                    <td><code>Printable Characters</code></td>
+                    <td>In the editable combobox, filters matching options and announces the count. In the select-only combobox, jumps to matching options via type-ahead.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="standards-subheading">ARIA Roles &amp; Attributes</h3>
+    <p class="standards-intro">Semantic ARIA attributes maintain the relationship between the combobox, its popup listbox, and live announcements:</p>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-attr">ARIA Role / Attribute</th>
+                    <th class="col-target">Target Element</th>
+                    <th>Description / Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>role="combobox"</code></td>
+                    <td>Input / Button</td>
+                    <td>Identifies the element as a combobox that controls a popup listbox.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-expanded="true / false"</code></td>
+                    <td>Combobox</td>
+                    <td>Indicates whether the associated listbox popup is currently displayed.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-controls="[ID]"</code></td>
+                    <td>Combobox</td>
+                    <td>References the ID of the popup <code>role="listbox"</code> element.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-autocomplete="list"</code></td>
+                    <td>Editable Input</td>
+                    <td>Informs assistive technologies that typing filters a list of suggested options.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-activedescendant="[ID]"</code></td>
+                    <td>Combobox</td>
+                    <td>Tracks the currently highlighted option while keeping DOM focus on the combobox.</td>
+                </tr>
+                <tr>
+                    <td><code>role="listbox" / role="option"</code></td>
+                    <td>Popup &amp; Items</td>
+                    <td>Defines the popup list container and its selectable options with <code>aria-selected</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-live="polite"</code></td>
+                    <td>Status Region</td>
+                    <td>Announces filtered result counts and newly selected values to screen readers.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

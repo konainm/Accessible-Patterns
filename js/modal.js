@@ -30,7 +30,7 @@ class AccessibleModal {
       if (e.key === 'Escape') {
         this.close();
       }
-      
+
       // Trap focus
       if (e.key === 'Tab') {
         this.trapFocus(e);
@@ -40,11 +40,11 @@ class AccessibleModal {
 
   open(triggerElement) {
     this.triggerButton = triggerElement;
-    
+
     // Show modal
     this.overlay.classList.add('is-open');
     this.modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.classList.add('modal-open'); // Prevent background scrolling
 
     // Update focusable elements
     this.updateFocusableElements();
@@ -63,7 +63,7 @@ class AccessibleModal {
     // Hide modal
     this.overlay.classList.remove('is-open');
     this.modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = ''; // Restore background scrolling
+    document.body.classList.remove('modal-open'); // Restore background scrolling
 
     // Return focus to trigger button
     if (this.triggerButton) {
@@ -105,7 +105,7 @@ function initModals() {
   if (modalEl && !modalEl.dataset.initialized) {
     const modalInstance = new AccessibleModal(modalEl);
     modalEl.dataset.initialized = 'true';
-    
+
     // Attach trigger buttons
     const triggers = document.querySelectorAll('[data-modal-target="demo-modal"]');
     triggers.forEach(trigger => {
@@ -119,3 +119,6 @@ function initModals() {
 // Initialize on DOM Load and SPA navigation
 document.addEventListener('DOMContentLoaded', initModals);
 document.addEventListener('pageContentLoaded', initModals);
+document.addEventListener('pageContentUnloading', () => {
+  document.body.classList.remove('modal-open');
+});

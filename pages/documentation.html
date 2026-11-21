@@ -1,0 +1,48 @@
+<div class="hero page-hero">
+    <h1>Documentation</h1>
+    <p>Learn how to run the Accessible Components Library locally and add new accessible components to the unified application shell.</p>
+</div>
+
+<section class="doc-section">
+    <h2>1. Getting the Code</h2>
+    <p>You can clone this library directly from GitHub to your local machine. You will need <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="inline-link">Git</a> installed.</p>
+    <pre><code>git clone https://github.com/konainm/Accessible-Patterns.git
+cd Accessible-Patterns</code></pre>
+    <p>Alternatively, you can visit the <a href="https://github.com/konainm/Accessible-Patterns" target="_blank" rel="noopener noreferrer" class="inline-link">GitHub Repository</a> and download the project as a ZIP file.</p>
+</section>
+
+<section class="doc-section">
+    <h2>2. Running Locally</h2>
+    <p>Because the unified app shell fetches component templates dynamically, the project should be served over HTTP rather than opened directly via the <code>file://</code> protocol.</p>
+
+    <h3 class="doc-subheading">Option A: Using npm (Recommended)</h3>
+    <p>If you have <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="inline-link">Node.js</a> installed, install dependencies and run the included start script:</p>
+    <pre><code>npm install
+npm start</code></pre>
+    <p>Then open your browser and navigate to <code>http://localhost:8080</code>.</p>
+
+    <h3 class="doc-subheading">Option B: Using Python</h3>
+    <p>If you have Python 3 installed, you can start a simple HTTP server from the project root:</p>
+    <pre><code>python -m http.server 8080</code></pre>
+    <p>Then open your browser and navigate to <code>http://localhost:8080</code>.</p>
+</section>
+
+<section class="doc-section">
+    <h2>3. Unified App Shell Architecture</h2>
+    <p>The site uses a single-entry app shell (<code>index.html</code>) for the shared header, navigation, global search, theme/viewport controls, and footer. Each component lives in its own focused files and is loaded on demand:</p>
+    <ul class="doc-list">
+        <li><strong>Template:</strong> Add a pure HTML fragment in <code>components/&lt;name&gt;.html</code> (no repeated header, footer, or boilerplate).</li>
+        <li><strong>Styles &amp; Script:</strong> Add <code>css/&lt;name&gt;.css</code> and <code>js/&lt;name&gt;.js</code>.</li>
+        <li><strong>Registration:</strong> Register the component once in <code>js/registry.js</code> to automatically wire up routing, the homepage grid, footer links, and global search.</li>
+    </ul>
+</section>
+
+<section class="doc-section">
+    <h2>4. Usage Guidelines</h2>
+    <p>When incorporating these patterns into your own projects, please remember:</p>
+    <ul class="doc-list">
+        <li><strong>Preserve ARIA attributes:</strong> Do not remove <code>aria-*</code> or <code>role="*"</code> attributes from the HTML structures. They are essential for screen readers.</li>
+        <li><strong>Keyboard testing:</strong> Always test any modifications using only your keyboard (Tab, Shift+Tab, Arrows, Space, Enter, Escape).</li>
+        <li><strong>Color Contrast:</strong> If you change the CSS variables (e.g., <code>--bg-primary</code>, <code>--text-primary</code>), verify that the contrast ratio remains at least 4.5:1 for normal text.</li>
+    </ul>
+</section>

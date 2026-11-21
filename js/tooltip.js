@@ -8,7 +8,7 @@ class AccessibleTooltip {
         this.trigger = trigger;
         this.tooltipId = this.trigger.getAttribute('aria-describedby');
         this.tooltip = document.getElementById(this.tooltipId);
-        
+
         if (!this.tooltip) return;
 
         this.init();
@@ -42,31 +42,40 @@ class AccessibleTooltip {
 }
 
 class AccessibleToggletip {
-    constructor(trigger) {
-        this.trigger = trigger;
-        const targetId = this.trigger.getAttribute('aria-controls');
-        this.dialog = document.getElementById(targetId);
-        
-        if (!this.dialog) return;
+        constructor(trigger, signal) {
+            this.trigger = trigger;
+            this.signal = signal;
+            const targetId = this.trigger.getAttribute('aria-controls');
+            this.dialog = document.getElementById(targetId);
 
-        this.isOpen = false;
-        this.init();
-    }
+            if (!this.dialog) return;
 
-    init() {
-        this.trigger.setAttribute('aria-expanded', 'false');
-        
-        this.trigger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent document click from immediately closing
-            this.toggle();
-        });
+            this.isOpen = false;
+            this.init();
+        }
 
-        // Close when clicking outside
-        document.addEventListener('click', (e) => {
-            if (this.isOpen && !this.dialog.contains(e.target) && !this.trigger.contains(e.target)) {
-                this.close();
-            }
-        });
+        init() {
+            this.trigger.setAttribute('aria-expanded', 'false');
+
+            this.trigger.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent document click from immediately closing
+                this.toggle();
+            });
+
+            // Close buttons inside interactive toggletips
+            this.dialog.querySelectorAll('[data-toggletip-close]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.close();
+                    this.trigger.focus();
+                });
+            });
+
+            // Close when clicking outside (cleaned up on route unload)
+            document.addEventListener('click', (e) => {
+                if (this.isOpen && !this.dialog.contains(e.target) && !this.trigger.contains(e.target)) {
+                    this.close();
+                }
+        }, this.signal ? { signal: this.signal } : undefined);
 
         // Close on Escape
         this.dialog.addEventListener('keydown', (e) => {
@@ -76,7 +85,7 @@ class AccessibleToggletip {
                 this.trigger.focus();
             }
         });
-        
+
         // Also listen on trigger for Escape
         this.trigger.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
@@ -118,8 +127,15 @@ class AccessibleToggletip {
     }
 }
 
+let tooltipAbortController = null;
+
 // Global initialization function for SPA router
 function initTooltips() {
+    if (tooltipAbortController) {
+        tooltipAbortController.abort();
+    }
+    tooltipAbortController = new AbortController();
+
     // Initialize standard hover/focus tooltips
     const standardTriggers = document.querySelectorAll('[data-tooltip-trigger]');
     standardTriggers.forEach(trigger => {
@@ -133,7 +149,7 @@ function initTooltips() {
     const toggleTriggers = document.querySelectorAll('[data-toggletip-trigger]');
     toggleTriggers.forEach(trigger => {
         if (!trigger.dataset.initialized) {
-            new AccessibleToggletip(trigger);
+            new AccessibleToggletip(trigger, tooltipAbortController.signal);
             trigger.dataset.initialized = 'true';
         }
     });
@@ -142,3 +158,9 @@ function initTooltips() {
 // Initialize on DOM load and SPA navigation
 document.addEventListener('DOMContentLoaded', initTooltips);
 document.addEventListener('pageContentLoaded', initTooltips);
+document.addEventListener('pageContentUnloading', () => {
+    if (tooltipAbortController) {
+        tooltipAbortController.abort();
+        tooltipAbortController = null;
+    }
+});

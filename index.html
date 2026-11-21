@@ -4,135 +4,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO(security): Configure X-Frame-Options and CSP frame-ancestors at the HTTP server/CDN layer if hosted outside static GitHub Pages. -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
     <title>Accessible Components Library</title>
     <meta name="description"
-        content="A curated library of premium, fully accessible web components featuring modern dark mode and glassmorphism design.">
-    <link rel="stylesheet" href="css/styles.css?v=2">
-    <link rel="stylesheet" href="css/modal.css?v=2">
-    <link rel="stylesheet" href="css/tabs.css?v=2">
-    <link rel="stylesheet" href="css/tooltip.css?v=2">
+    content="A curated library of universally accessible web components built with semantic HTML, W3C WAI-ARIA patterns,
+    and a unified zero-build app shell.">
+    <link rel="stylesheet" href="css/styles.css?v=4">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <script src="js/theme-init.js"></script>
 </head>
 
 <body>
-    <header>
-        <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
-            <img src="assets/favicon.png" alt="A11y Logo" style="width: 32px; height: 32px; border-radius: 6px;">
-            Accessible Components Library
-        </a>
-        <nav class="header-links" aria-label="Main navigation">
-            <a href="index.html">Components</a>
-            <a href="documentation.html">Documentation</a>
-            <a href="https://github.com/konainm/Accessible-Patterns" target="_blank" rel="noopener noreferrer"
-                aria-label="GitHub Repository">GitHub</a>
-            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme"
-                title="Toggle color theme">
-                <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
-            <button type="button" id="viewport-toggle" class="viewport-toggle-btn" aria-label="Switch to mobile view"
-                title="Toggle viewport simulation">
-                <svg class="view-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                </svg>
-                <svg class="view-icon-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
-            </button>
-        </nav>
-    </header>
+            <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main id="main-content">
-        <section class="hero">
-            <h1>Accessible Components Library</h1>
-            <div style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.95rem;">
-                Author: <a href="https://github.com/konainm" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); text-decoration: none; font-weight: 500;">konainm</a>
-            </div>
-            <p>Designing for everyone should not be an afterthought—it must be the foundation of everything we build.
-                This library is a dedicated component system aimed at removing digital barriers and empowering every
-                user through universally accessible design. By equipping teams with a truly equitable toolkit, we are
-                taking a vital step toward a web where intuitive, beautiful, and highly usable experiences are the
-                standard for everyone, regardless of how they navigate the digital world.</p>
-        </section>
-
-        <section aria-labelledby="components-heading">
-            <h2 id="components-heading" class="visually-hidden">Component Library</h2>
-
-            <div class="component-grid">
-                <!-- Modal Component Card -->
-                <a href="modal.html" class="component-card" aria-label="Dialog Component">
-                    <div class="card-image">
-                        <img src="assets/modal_thumbnail.png" alt="Preview of the sleek dark mode modal dialog">
-                    </div>
-                    <div class="card-content">
-                        <h2>Dialog</h2>
-                        <p>A fully accessible dialog box with focus trapping, ARIA roles, and Escape key support.</p>
-                    </div>
+            <header class="site-header">
+                <a href="#/" class="logo">
+                    <img src="assets/favicon.png" alt="A11y Logo" class="logo-icon">
+                    <span>Accessible Components Library</span>
                 </a>
 
-                <!-- Tabs Component Card -->
-                <a href="tabs.html" class="component-card" aria-label="Tabs">
-                    <div class="card-image">
-                        <img src="assets/tabs_thumbnail.png" alt="Preview of the sleek dark mode tabs navigation">
+                <div id="global-search" class="header-search" role="search" aria-label="Search components">
+                    <label for="global-search-input" class="visually-hidden">Search components and documentation</label>
+                    <div class="search-input-wrap">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="search" id="global-search-input" class="search-input" role="combobox"
+                            aria-autocomplete="list" aria-expanded="false" aria-controls="global-search-listbox"
+                            placeholder="Search components..." autocomplete="off">
+                        <kbd class="search-shortcut" aria-hidden="true">/</kbd>
                     </div>
-                    <div class="card-content">
-                        <h2>Tabs</h2>
-                        <p>Accessible tabbed interface with keyboard navigation. Includes automatic and manual
-                            activation variants.</p>
-                    </div>
-                </a>
-
-                <!-- Tooltip Component Card -->
-                <a href="tooltip.html" class="component-card" aria-label="Tooltip">
-                    <div class="card-image">
-                        <img src="assets/tooltip_thumbnail.png" alt="Preview of the sleek dark mode tooltips">
-                    </div>
-                    <div class="card-content">
-                        <h2>Tooltip</h2>
-                        <p>Accessible standard tooltips and interactive non-modal toggletip dialogs.</p>
-                    </div>
-                </a>
-
-                <!-- Combobox Component Card (Coming Soon) -->
-                <div class="component-card coming-soon" aria-label="Combobox Component (Coming Soon)">
-                    <div class="card-image">
-                        <div class="coming-soon-placeholder">
-                            <span>Coming Soon</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2>Combobox</h2>
-                        <p>A fully accessible autocomplete combobox with keyboard navigation and ARIA live regions.</p>
+                    <ul id="global-search-listbox" class="search-listbox" role="listbox"
+                        aria-label="Matching components and guides" hidden></ul>
+                    <div id="global-search-status" class="visually-hidden" role="status" aria-live="polite"
+                        aria-atomic="true">
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <script src="js/modal.js"></script>
-    <script src="js/tabs.js"></script>
-    <script src="js/tooltip.js"></script>
-    <script src="js/main.js"></script>
+                <nav class="header-links" aria-label="Main navigation">
+                    <a href="#/" data-route="/">Components</a>
+                    <a href="#/documentation" data-route="/documentation">Documentation</a>
+                    <a href="https://github.com/konainm/Accessible-Patterns" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub Repository">GitHub</a>
+                    <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme"
+                        title="Toggle color theme">
+                        <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <button type="button" id="viewport-toggle" class="viewport-toggle-btn"
+                        aria-label="Switch to mobile view" title="Toggle viewport simulation">
+                        <svg class="view-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                        <svg class="view-icon-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </button>
+                </nav>
+            </header>
+
+                <main id="main-content" tabindex="-1">
+                    <noscript>
+                        <section class="doc-section">
+                            <h1>JavaScript Required</h1>
+                            <p>The Accessible Components Library uses a lightweight client-side app shell to load
+                                individual
+                                components. Please enable JavaScript to browse the interactive examples.</p>
+                        </section>
+                    </noscript>
+                </main>
+
+                            <footer class="site-footer">
+                                <div class="footer-inner">
+                                    <div class="footer-brand">
+                                        <a href="#/" class="footer-logo">
+                                            <img src="assets/favicon.png" alt="A11y Logo" class="logo-icon">
+                                            <span>Accessible Components Library</span>
+                                        </a>
+                                        <p>Universally accessible UI patterns built with semantic HTML, W3C WAI-ARIA
+                                            practices, and zero build
+                                            dependencies.</p>
+                                    </div>
+
+                                    <div class="footer-column">
+                                        <h2>Components</h2>
+                                        <ul id="footer-components-list" class="footer-links"></ul>
+                                    </div>
+
+                                    <div class="footer-column">
+                                        <h2>Resources</h2>
+                                        <ul class="footer-links">
+                                            <li><a href="#/">Component Library</a></li>
+                                            <li><a href="#/documentation">Documentation</a></li>
+                                            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/" target="_blank"
+                                                    rel="noopener noreferrer">W3C ARIA APG</a></li>
+                                            <li><a href="https://github.com/konainm/Accessible-Patterns" target="_blank"
+                                                    rel="noopener noreferrer">GitHub Repository</a></li>
+                                        </ul>
+                                    </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Built by <a href="https://github.com/konainm" target="_blank" rel="noopener noreferrer"
+                        class="inline-link">konainm</a> · Focused on WCAG &amp; WAI-ARIA accessibility.</p>
+            </div>
+            </footer>
+
+            <div id="route-announcer" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+            <script src="js/registry.js?v=4"></script>
+            <script src="js/app.js?v=4"></script>
 </body>
 
 </html>

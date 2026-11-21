@@ -1,5 +1,3 @@
-<a href="#/" class="back-link">Back to Components</a>
-
 <div class="hero page-hero">
     <h1 class="component-title">Tooltip</h1>
     <p>Fully accessible tooltips and non-modal popover dialogs built with WAI-ARIA standards.</p>
@@ -7,7 +5,8 @@
 
 <section class="demo-section">
     <h2>Standard Tooltips (Hover / Focus)</h2>
-    <p class="section-intro">Purely informational tooltips that appear on hover or keyboard focus. They do not receive focus themselves and can be dismissed with the Escape key.</p>
+    <p class="section-intro">Purely informational tooltips that appear on hover or keyboard focus. They do not receive
+        focus themselves and can be dismissed with the Escape key.</p>
 
     <div class="tooltip-grid">
         <!-- Variant 1: Simple Plain Tooltip -->
@@ -29,7 +28,8 @@
                     More Information
                 </button>
                 <div id="tooltip-large" class="tooltip tooltip-large" role="tooltip">
-                    This is a larger, multi-line tooltip designed to hold a full sentence or two of descriptive context without breaking the layout.
+                    This is a larger, multi-line tooltip designed to hold a full sentence or two of descriptive context
+                    without breaking the layout.
                 </div>
             </div>
         </div>
@@ -38,19 +38,28 @@
 
 <section class="demo-section">
     <h2>Tooltip Dialogs / Toggletips (Click)</h2>
-    <p class="section-intro">Rich tooltips treated as non-modal dialogs. Triggered by click, allowing users to move focus inside them if necessary. Dismissed by clicking outside or pressing Escape.</p>
+    <p class="section-intro">Rich tooltips treated as non-modal dialogs. Triggered by click, allowing users to move
+        focus inside them if necessary. Dismissed by clicking outside or pressing Escape.</p>
 
     <div class="tooltip-grid">
         <!-- Variant 3: Tooltip Dialog (Content Only) -->
         <div class="demo-box">
             <div class="tooltip-wrapper">
-                <button type="button" class="btn btn-primary" data-toggletip-trigger aria-controls="dialog-content" aria-expanded="false">
+                <button type="button" class="btn btn-primary" data-toggletip-trigger aria-controls="dialog-content"
+                    aria-expanded="false">
                     Glossary Term
-                    <svg class="btn-icon-trailing" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <svg class="btn-icon-trailing" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
                 </button>
-                <div id="dialog-content" class="tooltip-dialog" role="dialog" aria-modal="false" aria-label="Glossary Definition">
+                <div id="dialog-content" class="tooltip-dialog" role="dialog" aria-modal="false"
+                    aria-label="Glossary Definition">
                     <h3>Toggletip</h3>
-                    <p>A toggletip is a UI component used to display supplemental information. Unlike a standard tooltip, it is toggled by click and can contain richer formatting.</p>
+                    <p>A toggletip is a UI component used to display supplemental information. Unlike a standard
+                        tooltip, it is toggled by click and can contain richer formatting.</p>
                 </div>
             </div>
         </div>
@@ -58,10 +67,12 @@
         <!-- Variant 4: Tooltip Dialog (Interactive) -->
         <div class="demo-box">
             <div class="tooltip-wrapper">
-                <button type="button" class="btn btn-primary" data-toggletip-trigger aria-controls="dialog-interactive" aria-expanded="false">
+                <button type="button" class="btn btn-primary" data-toggletip-trigger aria-controls="dialog-interactive"
+                    aria-expanded="false">
                     Profile Settings
                 </button>
-                <div id="dialog-interactive" class="tooltip-dialog interactive" role="dialog" aria-modal="false" aria-label="Profile Quick Actions">
+                <div id="dialog-interactive" class="tooltip-dialog interactive" role="dialog" aria-modal="false"
+                    aria-label="Profile Quick Actions">
                     <h3>Quick Actions</h3>
                     <p>You can quickly update your status or view your full profile from here.</p>
                     <button type="button" class="btn btn-primary btn-sm" data-toggletip-close>View Full Profile</button>
@@ -75,7 +86,8 @@
     <h2>Accessibility Standards</h2>
 
     <h3>Keyboard Navigation</h3>
-    <p class="standards-intro">The tooltip and toggletip components follow specific W3C WAI-ARIA keyboard interaction patterns:</p>
+    <p class="standards-intro">The tooltip and toggletip components follow specific W3C WAI-ARIA keyboard interaction
+        patterns:</p>
     <div class="table-wrapper">
         <table>
             <thead>
@@ -104,14 +116,16 @@
                 <tr>
                     <td><code>Tab / Shift + Tab</code></td>
                     <td>When focus is inside Toggletip</td>
-                    <td>Moves focus through the interactive elements inside the dialog, following standard tab order.</td>
+                    <td>Moves focus through the interactive elements inside the dialog, following standard tab order.
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <h3 class="standards-subheading">ARIA Roles &amp; Attributes</h3>
-    <p class="standards-intro">The markup uses semantic ARIA properties to communicate the state and purpose of the tooltip to screen readers:</p>
+    <p class="standards-intro">The markup uses semantic ARIA properties to communicate the state and purpose of the
+        tooltip to screen readers:</p>
     <div class="table-wrapper">
         <table>
             <thead>

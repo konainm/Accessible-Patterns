@@ -4,7 +4,7 @@
  * global search metadata, footer quick link, and on-demand CSS/JS assets.
  */
 window.APP_REGISTRY = Object.freeze({
-    version: '9',
+    version: '10',
 
     pages: Object.freeze([
         Object.freeze({
@@ -100,6 +100,23 @@ window.APP_REGISTRY = Object.freeze({
                 type: 'image',
                 src: 'assets/combobox_thumbnail.png',
                 alt: 'Preview of the sleek dark mode autocomplete combobox'
+            })
+        }),
+        Object.freeze({
+            id: 'menubar',
+            route: '/menubar',
+            title: 'Menubar',
+            pageTitle: 'Menubar | Accessible Patterns',
+            category: 'Component',
+            description: 'A W3C WAI-ARIA horizontal menubar with roving tabindex, nested submenus, and checkbox/radio items.',
+            template: 'components/menubar.html',
+            styles: Object.freeze(['css/menubar.css?v=10']),
+            scripts: Object.freeze(['js/menubar.js?v=10']),
+            keywords: Object.freeze(['menubar', 'menu', 'menuitem', 'submenu', 'menuitemcheckbox', 'menuitemradio', 'toolbar', 'editor', 'roving tabindex']),
+            thumbnail: Object.freeze({
+                type: 'image',
+                src: 'assets/menubar_thumbnail.png',
+                alt: 'Preview of the sleek dark mode horizontal menubar with dropdown menu'
             })
         })
     ])

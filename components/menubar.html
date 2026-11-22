@@ -1,0 +1,504 @@
+<div class="hero page-hero">
+    <h1 id="menubar-title" class="component-title">Menubar</h1>
+    <p>A desktop-style horizontal menu bar implementing the W3C WAI-ARIA Authoring Practices Guide (APG) Menubar
+        pattern, with roving tabindex, nested submenus, checkbox and radio menu items, and full keyboard navigation.</p>
+</div>
+
+<aside class="menubar-note" aria-label="Accessibility design note">
+    <strong>W3C APG Note:</strong> A <code>role="menubar"</code> is a single-tab-stop composite widget designed for
+    desktop-style application menus and rich toolbars. For standard website navigation links, the W3C APG recommends a
+    simpler disclosure pattern unless arrow-key menu semantics are specifically required.
+</aside>
+
+<!-- Example 1: Editor Formatting Menubar -->
+<section class="menubar-section" aria-labelledby="editor-menubar-heading">
+    <h2 id="editor-menubar-heading">Text Formatting Editor Menubar</h2>
+    <p>Use <code>Tab</code> to enter the menubar, <code>Left / Right Arrow</code> to move across top-level menus,
+        <code>Down / Up Arrow</code> to open and traverse submenus, <code>Right / Left Arrow</code> for nested submenus,
+        and <code>Enter / Space</code> to activate items.</p>
+
+    <div class="menubar-demo" data-menubar-demo="editor">
+        <ul role="menubar" aria-label="Text Formatting" class="menubar" data-menubar>
+            <!-- Font Menu (Radio Group) -->
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0"
+                    class="menubar-trigger">
+                    <span>Font</span>
+                    <svg class="menubar-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <ul role="menu" aria-label="Font" class="menubar-menu" hidden>
+                    <li role="none">
+                        <ul role="group" aria-label="Font Family" class="menubar-group">
+                            <li role="none">
+                                <button type="button" role="menuitemradio" aria-checked="true" tabindex="-1"
+                                    class="menubar-option" data-action="font" data-value="sans"
+                                    data-label="Sans-serif">
+                                    <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                    <span>Inter (Sans-serif)</span>
+                                </button>
+                            </li>
+                            <li role="none">
+                                <button type="button" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    class="menubar-option" data-action="font" data-value="serif" data-label="Serif">
+                                    <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                    <span>Georgia (Serif)</span>
+                                </button>
+                            </li>
+                            <li role="none">
+                                <button type="button" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    class="menubar-option" data-action="font" data-value="mono" data-label="Monospace">
+                                    <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                    <span>Monospace</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Style Menu (Checkboxes + Separator + Nested Alignment Submenu) -->
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                    class="menubar-trigger">
+                    <span>Style</span>
+                    <svg class="menubar-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <ul role="menu" aria-label="Style" class="menubar-menu" hidden>
+                    <li role="none">
+                        <button type="button" role="menuitemcheckbox" aria-checked="false" tabindex="-1"
+                            class="menubar-option" data-action="style" data-value="bold" data-label="Bold">
+                            <span class="menubar-indicator menubar-checkbox-mark" aria-hidden="true">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            <span>Bold</span>
+                        </button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitemcheckbox" aria-checked="false" tabindex="-1"
+                            class="menubar-option" data-action="style" data-value="italic" data-label="Italic">
+                            <span class="menubar-indicator menubar-checkbox-mark" aria-hidden="true">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            <span>Italic</span>
+                        </button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitemcheckbox" aria-checked="false" tabindex="-1"
+                            class="menubar-option" data-action="style" data-value="underline" data-label="Underline">
+                            <span class="menubar-indicator menubar-checkbox-mark" aria-hidden="true">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            <span>Underline</span>
+                        </button>
+                    </li>
+                    <li role="separator" class="menubar-separator"></li>
+                    <li role="none" class="menubar-submenu-wrap">
+                        <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                            class="menubar-option menubar-submenu-trigger">
+                            <span class="menubar-option-label">Text Align</span>
+                            <svg class="menubar-submenu-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                        <ul role="menu" aria-label="Text Align" class="menubar-menu menubar-submenu" hidden>
+                            <li role="none">
+                                <ul role="group" aria-label="Text Alignment" class="menubar-group">
+                                    <li role="none">
+                                        <button type="button" role="menuitemradio" aria-checked="true" tabindex="-1"
+                                            class="menubar-option" data-action="align" data-value="left"
+                                            data-label="Left">
+                                            <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                            <span>Align Left</span>
+                                        </button>
+                                    </li>
+                                    <li role="none">
+                                        <button type="button" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                            class="menubar-option" data-action="align" data-value="center"
+                                            data-label="Center">
+                                            <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                            <span>Align Center</span>
+                                        </button>
+                                    </li>
+                                    <li role="none">
+                                        <button type="button" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                            class="menubar-option" data-action="align" data-value="right"
+                                            data-label="Right">
+                                            <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                            <span>Align Right</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Size Menu (Actions + Separator + Radio Presets) -->
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                    class="menubar-trigger">
+                    <span>Size</span>
+                    <svg class="menubar-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <ul role="menu" aria-label="Size" class="menubar-menu" hidden>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="size-step" data-value="smaller">
+                            <span>Smaller</span>
+                        </button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="size-step" data-value="larger">
+                            <span>Larger</span>
+                        </button>
+                    </li>
+                    <li role="separator" class="menubar-separator"></li>
+                    <li role="none">
+                        <ul role="group" aria-label="Font Size Presets" class="menubar-group">
+                            <li role="none">
+                                <button type="button" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    class="menubar-option" data-action="size" data-value="sm" data-label="Small">
+                                    <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                    <span>Small</span>
+                                </button>
+                            </li>
+                            <li role="none">
+                                <button type="button" role="menuitemradio" aria-checked="true" tabindex="-1"
+                                    class="menubar-option" data-action="size" data-value="md" data-label="Medium">
+                                    <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                    <span>Medium</span>
+                                </button>
+                            </li>
+                            <li role="none">
+                                <button type="button" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    class="menubar-option" data-action="size" data-value="lg" data-label="Large">
+                                    <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                    <span>Large</span>
+                                </button>
+                            </li>
+                            <li role="none">
+                                <button type="button" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    class="menubar-option" data-action="size" data-value="xl" data-label="Extra Large">
+                                    <span class="menubar-indicator menubar-radio-dot" aria-hidden="true"></span>
+                                    <span>Extra Large</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Top-Level Leaf Action -->
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" tabindex="-1" class="menubar-trigger" data-action="reset">
+                    <span>Reset</span>
+                </button>
+            </li>
+        </ul>
+
+        <div id="editor-preview" class="editor-preview-box preview-font-sans preview-align-left preview-size-md">
+            Designing for everyone should not be an afterthought—it must be the foundation of everything we build. Use
+            the menubar above to format this preview with keyboard or pointer controls.
+        </div>
+
+        <div class="menubar-status-bar">
+            <span>Active formatting:</span>
+            <strong data-editor-summary>Sans-serif · Left · Medium</strong>
+        </div>
+
+        <div class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-menubar-status></div>
+    </div>
+</section>
+
+<!-- Example 2: Application Navigation Menubar -->
+<section class="menubar-section" aria-labelledby="nav-menubar-heading">
+    <h2 id="nav-menubar-heading">Application Navigation Menubar</h2>
+    <p>Demonstrates a horizontal application navigation menubar with multi-level submenus and first-character
+        type-ahead navigation.</p>
+
+    <div class="menubar-demo" data-menubar-demo="nav">
+        <ul role="menubar" aria-label="Workspace Navigation" class="menubar" data-menubar>
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" tabindex="0" class="menubar-trigger" data-action="navigate"
+                    data-label="Overview">
+                    <span>Overview</span>
+                </button>
+            </li>
+
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                    class="menubar-trigger">
+                    <span>Patterns</span>
+                    <svg class="menubar-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <ul role="menu" aria-label="Patterns" class="menubar-menu" hidden>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="navigate" data-label="Patterns / Dialog">Dialog</button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="navigate" data-label="Patterns / Tabs">Tabs</button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="navigate" data-label="Patterns / Tooltip">Tooltip</button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="navigate" data-label="Patterns / Combobox">Combobox</button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="navigate" data-label="Patterns / Menubar">Menubar</button>
+                    </li>
+                </ul>
+            </li>
+
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                    class="menubar-trigger">
+                    <span>Guidelines</span>
+                    <svg class="menubar-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <ul role="menu" aria-label="Guidelines" class="menubar-menu" hidden>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="navigate" data-label="Guidelines / Keyboard Focus">Keyboard Focus</button>
+                    </li>
+                    <li role="none">
+                        <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                            data-action="navigate" data-label="Guidelines / ARIA Landmarks">ARIA Landmarks</button>
+                    </li>
+                    <li role="separator" class="menubar-separator"></li>
+                    <li role="none" class="menubar-submenu-wrap">
+                        <button type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                            class="menubar-option menubar-submenu-trigger">
+                            <span class="menubar-option-label">WCAG Conformance</span>
+                            <svg class="menubar-submenu-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                        <ul role="menu" aria-label="WCAG Conformance" class="menubar-menu menubar-submenu" hidden>
+                            <li role="none">
+                                <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                                    data-action="navigate" data-label="Guidelines / WCAG Level A">Level A
+                                    (Essential)</button>
+                            </li>
+                            <li role="none">
+                                <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                                    data-action="navigate" data-label="Guidelines / WCAG Level AA">Level AA
+                                    (Recommended)</button>
+                            </li>
+                            <li role="none">
+                                <button type="button" role="menuitem" tabindex="-1" class="menubar-option"
+                                    data-action="navigate" data-label="Guidelines / WCAG Level AAA">Level AAA
+                                    (Enhanced)</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li role="none" class="menubar-item-wrap">
+                <button type="button" role="menuitem" tabindex="-1" class="menubar-trigger" data-action="navigate"
+                    data-label="Help & Shortcuts">
+                    <span>Help</span>
+                </button>
+            </li>
+        </ul>
+
+        <div class="menubar-status-bar">
+            <span>Last activated item:</span>
+            <strong data-nav-readout>Overview</strong>
+        </div>
+
+        <div class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-menubar-status></div>
+    </div>
+</section>
+
+<!-- Accessibility Standards Documentation -->
+<section class="standards-section">
+    <h2>Accessibility Standards</h2>
+
+    <h3>Keyboard Navigation</h3>
+    <p class="standards-intro">The menubar component follows the W3C WAI-ARIA Authoring Practices Guide (APG) composite
+        keyboard model:</p>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-key">Key</th>
+                    <th class="col-context">Context</th>
+                    <th>Function</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>Tab / Shift + Tab</code></td>
+                    <td>Entering or exiting</td>
+                    <td>Moves focus into the menubar (onto the active top-level item) or exits the entire menubar,
+                        closing any open submenus.</td>
+                </tr>
+                <tr>
+                    <td><code>Left / Right Arrow</code></td>
+                    <td>In horizontal menubar</td>
+                    <td>Moves focus to the previous or next top-level menu item, wrapping at the ends. If a menu is
+                        open, switches to the adjacent item's submenu.</td>
+                </tr>
+                <tr>
+                    <td><code>Down / Up Arrow</code></td>
+                    <td>In horizontal menubar</td>
+                    <td>Opens the focused item's submenu and moves focus to its first item (<code>Down</code>) or last
+                        item (<code>Up</code>).</td>
+                </tr>
+                <tr>
+                    <td><code>Down / Up Arrow</code></td>
+                    <td>Inside popup menu</td>
+                    <td>Moves focus to the next or previous item inside the open menu, wrapping at the top and bottom.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>Right Arrow</code></td>
+                    <td>Inside popup menu</td>
+                    <td>Opens a nested submenu and focuses its first item. If the item has no submenu, moves to the next
+                        top-level menubar item and opens its submenu.</td>
+                </tr>
+                <tr>
+                    <td><code>Left Arrow</code></td>
+                    <td>Inside popup menu</td>
+                    <td>Closes a nested submenu and returns focus to its parent item. From a first-level dropdown, moves
+                        to the previous top-level menubar item.</td>
+                </tr>
+                <tr>
+                    <td><code>Enter / Space</code></td>
+                    <td>Menubar or popup menu</td>
+                    <td>Opens a submenu and focuses its first item, or activates the leaf item (updating checkbox/radio
+                        state) and closes the menu.</td>
+                </tr>
+                <tr>
+                    <td><code>Escape</code></td>
+                    <td>Inside popup menu</td>
+                    <td>Closes the current menu and returns focus to its parent menu item.</td>
+                </tr>
+                <tr>
+                    <td><code>Home / End</code></td>
+                    <td>Menubar or popup menu</td>
+                    <td>Moves focus to the first or last item in the current menubar or open menu.</td>
+                </tr>
+                <tr>
+                    <td><code>Printable Characters</code></td>
+                    <td>Menubar or popup menu</td>
+                    <td>Moves focus to the next item in the current menu whose visible label starts with the typed
+                        character.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="standards-subheading">ARIA Roles &amp; Attributes</h3>
+    <p class="standards-intro">Semantic ARIA roles and states expose the menu hierarchy, selection state, and grouping
+        to assistive technologies:</p>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-attr">ARIA Role / Attribute</th>
+                    <th class="col-target">Target Element</th>
+                    <th>Description / Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>role="menubar"</code></td>
+                    <td>Top-level list</td>
+                    <td>Identifies a persistent horizontal bar of top-level menu items.</td>
+                </tr>
+                <tr>
+                    <td><code>role="menu"</code></td>
+                    <td>Popup / Submenu list</td>
+                    <td>Identifies a popup container offering a list of choices or nested submenus.</td>
+                </tr>
+                <tr>
+                    <td><code>role="menuitem"</code></td>
+                    <td>Menu action / trigger</td>
+                    <td>Identifies an interactive action or submenu trigger inside a menubar or menu.</td>
+                </tr>
+                <tr>
+                    <td><code>role="menuitemcheckbox"</code></td>
+                    <td>Toggleable option</td>
+                    <td>A menu item with an independent on/off state conveyed via <code>aria-checked</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>role="menuitemradio"</code></td>
+                    <td>Exclusive option</td>
+                    <td>A mutually exclusive menu item within a <code>role="group"</code>, conveyed via
+                        <code>aria-checked</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>role="group" / role="separator"</code></td>
+                    <td>Option groups &amp; dividers</td>
+                    <td>Groups related radio options with an accessible label and visually/semantically separates
+                        sections.</td>
+                </tr>
+                <tr>
+                    <td><code>role="none"</code></td>
+                    <td>List item wrappers</td>
+                    <td>Removes implicit list item semantics from <code>&lt;li&gt;</code> wrappers so screen readers
+                        only count menu items.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-haspopup="true"</code></td>
+                    <td>Submenu triggers</td>
+                    <td>Indicates that activating the menu item opens a popup <code>role="menu"</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>aria-expanded="true / false"</code></td>
+                    <td>Submenu triggers</td>
+                    <td>Communicates whether the associated popup menu is currently open or closed.</td>
+                </tr>
+                <tr>
+                    <td><code>tabindex="0 / -1"</code></td>
+                    <td>Roving focus target</td>
+                    <td>Maintains a single tab stop on the active top-level menubar item while arrow keys move focus.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

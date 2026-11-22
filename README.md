@@ -31,6 +31,12 @@ A W3C WAI-ARIA compliant combobox supporting both editable autocomplete and sele
 - **ARIA**: Uses `role="combobox"`, `aria-autocomplete="list"`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, `role="listbox"`, and `role="option"`.
 - **Variants**: Includes both **Editable Combobox (List Autocomplete)** and **Select-Only Combobox**.
 
+### 5. Menubar
+A desktop-style horizontal menu bar following the W3C WAI-ARIA APG Menubar pattern.
+- **Features**: Single-tab-stop roving `tabindex`, multi-level nested submenus, full arrow/Home/End/Enter/Space/Escape and first-character navigation, and live announcements.
+- **ARIA**: Uses `role="menubar"`, `role="menu"`, `role="menuitem"`, `role="menuitemcheckbox"`, `role="menuitemradio"`, `role="group"`, `role="separator"`, `role="none"`, `aria-haspopup`, `aria-expanded`, and `aria-checked`.
+- **Variants**: Includes a **Text Formatting Editor Menubar** (with live formatting preview) and an **Application Navigation Menubar**.
+
 ## How to Run Locally
 
 Since this is built with standard semantic HTML, CSS, and Vanilla JavaScript, there are no build steps required.
